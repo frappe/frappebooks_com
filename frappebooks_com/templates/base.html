@@ -1,0 +1,49 @@
+{%- import 'templates/macros.html' as utils with context -%}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="generator" content="frappe">
+        <title>
+            {%- block title -%}
+            {{ title + " - Frappe Books" if title else "Frappe Books - Simple and modern book-keeping software for desktop" }}
+            {%- endblock -%}
+        </title>
+        {%- block meta -%}
+        {%- endblock -%}
+        <link rel="icon" type="image/png" href="{{ utils.asset('img/favicon.ico') | abs_url }}">
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ utils.asset('img/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ utils.asset('img/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ utils.asset('img/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ utils.asset('img/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ utils.asset('img/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ utils.asset('img/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ utils.asset('img/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ utils.asset('img/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ utils.asset('img/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ utils.asset('img/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ utils.asset('img/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ utils.asset('img/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ utils.asset('img/favicon-16x16.png') }}">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{ utils.asset('img/ms-icon-144x144.png') }}">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <!-- Styles -->
+        <link href="{{ utils.asset('css/style.dev.css' if developer_mode else 'css/style.prod.css') }}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    </head>
+
+    <body class="font-sans text-gray-900 antialiased">
+        {%- include "templates/includes/navbar.html" ignore missing -%}
+        {%- block body -%}{%- endblock -%}
+        {%- include "templates/includes/footer.html" ignore missing -%}
+    </body>
+</html>

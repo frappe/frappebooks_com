@@ -1,0 +1,17 @@
+{% extends base_template_path %}
+
+{% block title %}Error{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-xl font-semibold text-red-500">
+        Internal Server Error
+    </h2>
+    <small>Status: 500</small>
+    <div class="mt-4 text-xs">
+        <pre class="bg-gray-800 text-white rounded p-4">
+            <code>{{ error | e }}</code>
+        </pre>
+    </div>
+</div>
+{% endblock %}

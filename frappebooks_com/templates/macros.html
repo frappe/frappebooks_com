@@ -1,0 +1,41 @@
+{%- macro asset(asset_path) -%}
+{{ '/assets/frappebooks_com/' + asset_path }}
+{%- endmacro %}
+
+{%- macro download_button(class = '') -%}
+{%- set link = download_links.get(platform) -%}
+<a class="inline-block bg-gray-900 rounded text-white px-10 py-3 font-semibold {{ class }}"
+    href="{{ link or default_download_link }}">
+    {%- if link and platform -%}
+    Download for {{ platform }}
+    {%- else -%}
+    Download
+    {%- endif -%}
+</a>
+{%- endmacro %}
+
+{%- macro alternative_download_links(class = '') -%}
+{%- set link = download_links.get(platform) -%}
+{% set platforms = ['macOS', 'Windows', 'Linux'] %}
+{% set d = namespace(alt_platforms=[], alt_links=[]) %}
+
+{%- for p in platforms -%}
+{%- if p != platform -%}
+{%- set d.alt_platforms = d.alt_platforms + [p] -%}
+{%- set d.alt_links = d.alt_links + [download_links.get(p)] -%}
+{%- endif -%}
+{%- endfor -%}
+
+{%- if platform -%}
+<p class="{{ class }}">
+    Also available for <a class="hover:underline" href="{{ d.alt_links[0] }}">{{ d.alt_platforms[0] }}</a> and
+    <a class="hover:underline" href="{{ d.alt_links[1] }}">{{ d.alt_platforms[1] }}</a>
+</p>
+{%- endif -%}
+{%- endmacro %}
+
+{%- macro inspect(var, render=True) -%}
+{%- if render -%}
+<pre>{{ var | pprint | e }}</pre>
+{%- endif -%}
+{%- endmacro %}

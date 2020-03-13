@@ -1,0 +1,200 @@
+{%- import 'templates/macros.html' as utils with context -%}
+{% extends base_template_path %}
+
+
+{% block body %}
+<section class="container">
+    <img class="w-full" src="{{ utils.asset('img/frappe-comic-1.png') }}" alt="Comic Strip">
+    <div class="mt-8 p-8 border-2 border-gray-800 flex flex-col sm:flex-row sm:items-center sm:justify-between rounded">
+        <h1 class="text-3xl font-semibold tracking-wide">
+            Free Desktop Accounting Software <br>for Small Businesses
+        </h1>
+        <div class="mt-4 sm:mt-0 flex flex-col items-start sm:items-center">
+            {{ utils.download_button('sm:px-12 sm:py-6 text-xl') }}
+            {{ utils.alternative_download_links('mt-1') }}
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="py-20 flex">
+        <div class="w-full sm:w-3/5">
+            <h2 class="text-4xl leading-none font-bold">Why Frappe Books?</h2>
+            <p class="mt-6 text-xl">
+                Offline Desktop software is a rare breed these days. Offline Accounting software even more so. Existing
+                solutions like Tally and GNUCash are either paid or lack in terms of UX. This is why we need Frappe
+                Books.
+            </p>
+        </div>
+        <div class="hidden sm:block w-2/5">
+
+        </div>
+    </div>
+    <hr class="border-t border-gray-600">
+    <div class="py-20 flex">
+        <div class="hidden sm:block w-2/5">
+        </div>
+        <div class="w-full sm:w-3/5">
+            <h2 class="text-4xl leading-none font-bold">Why Desktop?</h2>
+            <p class="mt-6 text-xl">
+                Cloud apps compromise the ownership of your data. All your data must go through a server and you are
+                bound
+                by limitations set by the server. Pricing could change anytime, and you don’t have the choice to use an
+                older version. With traditional desktop apps, you have much more control over your data and you can keep
+                using a version that works for you.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="flex flex-wrap sm:flex-no-wrap">
+        <div class="w-full sm:w-1/2 p-10 border-gray-600 border flex flex-col">
+            <h2 class="text-3xl font-semibold leading-none">Free and Open Source</h2>
+            <p class="mt-4 text-xl">
+                Frappe Books is free software. This means it comes with the four essential freedoms. You are allowed
+                to
+                run it as you wish, you can look at its source code and modify it.
+            </p>
+            <p class="mt-auto">
+                <a href="/free-and-open-source" class="mt-4 block font-semibold">Learn More ⟶</a>
+            </p>
+        </div>
+        <div
+            class="w-full sm:w-1/2 p-10 border-gray-600 border-l sm:border-l-0 sm:border-t border-r border-b flex flex-col">
+            <h2 class="text-3xl font-semibold leading-none">How Did We Do It?</h2>
+            <p class="mt-4 text-xl">
+                Frappe Books is built with our homegrown framework FrappeJS based on NodeJS and bundled with Electron.
+                But it is still designed in a way how a desktop software functions.
+            </p>
+            <p class="mt-auto">
+                <a href="/technologies" class="mt-4 block font-semibold">Learn More ⟶</a>
+            </p>
+        </div>
+    </div>
+</section>
+<section class="mt-24 mb-20 container">
+    <h2 class="text-4xl font-semibold">From the Team Behind ERPNext</h2>
+    <p class="text-xl mt-4">
+        We have been building business software for over a decade now. Learning from our mistakes and picking the best
+        parts of our flagship product ERPNext, we came up with a simple app that does one thing well, Accounting.
+    </p>
+    <div class="mt-10">
+        <img class="w-full" style="filter: grayscale(1);" src="{{ utils.asset('img/frappe_team.webp') }}"
+            alt="Frappe Team Picture">
+    </div>
+</section>
+<section class="bg-gray-900 text-white py-20">
+    <div class="container">
+        <h2 class="text-4xl font-semibold">Everything You Need</h2>
+        <p class="text-xl text-gray-300">
+            From basic invoicing features to customizable invoices to advanced dashboards, we have got you covered.
+        </p>
+        {%- set tabs = [
+            {'name': 'Dashboard', 'img': 'img/features/dashboard.png'},
+            {'name': 'Invoicing', 'img': 'img/features/invoicing.png'},
+            {'name': 'Billing', 'img': 'img/features/billing.webp'},
+            {'name': 'Payments', 'img': 'img/features/payments.webp'},
+            {'name': 'Ledger', 'img': 'img/features/double-entry.webp'}
+        ]
+        -%}
+        <div class="mt-8"
+            x-data="{ selectedTab: 'Invoicing', tabs: ['Dashboard', 'Invoicing', 'Billing', 'Payments', 'Ledger'] }"
+            x-init="() => {
+                setInterval(() => {
+                    let nextIndex = (tabs.indexOf(selectedTab) + 1) % tabs.length;
+                    selectedTab = tabs[nextIndex];
+                }, 5000)
+            }">
+            <nav class="flex overflow-auto">
+                {%- for tab in tabs -%}
+                <div class="mr-18 border-b-2 border-transparent hover:border-white"
+                    @click="selectedTab = '{{ tab.name }}'"
+                    :class="{'border-white': selectedTab === '{{ tab.name }}'}">
+                    <h3 class="py-6 font-semibold text-xl hover:text-white cursor-pointer"
+                        :class="selectedTab === '{{ tab.name }}' ? 'text-white' : 'text-gray-500'">
+                        {{ tab.name }}
+                    </h3>
+                </div>
+                {%- endfor -%}
+            </nav>
+            <div class="mt-4">
+                {%- for tab in tabs -%}
+                <img :class="{'hidden': selectedTab !== '{{ tab.name }}'}" class="w-full"
+                    src="{{ utils.asset(tab.img) }}" alt="Screenshot of {{ tab.name }}">
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container mt-20">
+    {%- set features = [
+          {
+            'title': 'Journal Entries',
+            'description': 'Record ad-hoc accounting entries for entering expenses, opening entries, and bank payments.',
+            'icon': 'img/more-features/journal-entries.svg'
+          },
+          {
+            'title': 'Invoice Templates',
+            'description': 'Beautiful Invoice templates that you can further customize with the color and logo of your brand.',
+            'icon': 'img/more-features/invoice-templates.svg'
+          },
+          {
+            'title': 'Works Offline',
+            'description': 'Frappe Books uses a local file from your computer and when you create invoices, it saves them on your local machine.',
+            'icon': 'img/more-features/works-offline.svg'
+          },
+          {
+            'title': 'Privacy by default',
+            'description': 'Frappe Books is a local app, which means you get data ownership and privacy for free.',
+            'icon': 'img/more-features/privacy.svg'
+          },
+          {
+            'title': 'Portable',
+            'description': 'Frappe Books uses the lightweight SQLite database which uses simple files to store their data.',
+            'icon': 'img/more-features/portable.svg'
+          },
+          {
+            'title': 'Financial Reports',
+            'description': 'Frappe Books comes with standard financial reports like Profit and Loss Statement, Trial Balance and Balance Sheet.',
+            'icon': 'img/more-features/financial-reports.svg'
+          },
+          {
+            'title': 'Multi-currency',
+            'description': 'Record your invoices in your customer’s currency and Frappe Books will convert them in your currency.',
+            'icon': 'img/more-features/multi-currency.svg'
+          },
+          {
+            'title': 'Open Source',
+            'description': 'Frappe Books is free and open-source software. Help us improve it by reporting issues or fixing them on GitHub.',
+            'icon': 'img/more-features/open-source.svg'
+          }
+        ]
+    -%}
+
+    <h2 class="text-3xl font-semibold leading-none">More Features</h2>
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap- gap-12">
+        {%- for feature in features -%}
+        <div>
+            <img class="h-8" src="{{ utils.asset(feature.icon) }}" alt="Icon for {{ feature.title }}">
+            <h3 class="mt-8 font-semibold text-xl">{{ feature.title }}</h3>
+            <p class="mt-4 text-xl">{{ feature.description }}</p>
+        </div>
+        {%- endfor -%}
+    </div>
+</section>
+<section class="container my-20">
+    <div class="border-2 border-gray-800 rounded p-8 sm:p-20 sm:text-center">
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-wide leading-10">
+            Free Desktop Accounting<br> Software for Small Businesses
+        </h2>
+        <p class="mt-8 text-xl lg:mx-40">
+            Frappe Books simplifies invoicing, billing, and accounting for freelancers and small business owners. Spend
+            more time doing your business and less time keeping books.
+        </p>
+        <p class="mt-8">
+            {{ utils.download_button('sm:px-12 sm:py-6 text-xl') }}
+        </p>
+        {{ utils.alternative_download_links('mt-2') }}
+    </div>
+</section>
+{% endblock %}

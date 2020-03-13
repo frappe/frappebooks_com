@@ -4,3 +4,6 @@
 *.swp
 tags
 frappebooks_com/docs/current
+node_modules
+frappebooks_com/public/css/style.dev.css
+frappebooks_com/public/css/style.prod.css

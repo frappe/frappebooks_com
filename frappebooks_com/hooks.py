@@ -35,7 +35,7 @@ app_license = "MIT"
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "index"
 
 # website user home page (by Role)
 # role_home_page = {
@@ -44,6 +44,8 @@ app_license = "MIT"
 
 # Website user home page (by function)
 # get_website_user_home_page = "frappebooks_com.utils.get_home_page"
+
+update_website_context = ["frappebooks_com.website_context.get_context"]
 
 # Generators
 # ----------
