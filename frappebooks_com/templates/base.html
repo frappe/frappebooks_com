@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        {%- block head -%}
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         <meta name="generator" content="frappe">
@@ -35,15 +36,20 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <!-- Font -->
-        <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700,800,900&display=swap"
+            rel="stylesheet">
         <!-- Styles -->
-        <link href="{{ utils.asset('css/style.dev.css' if developer_mode else 'css/style.prod.css') }}" rel="stylesheet">
+        <link href="{{ utils.asset('css/style.dev.css' if developer_mode else 'css/style.prod.css') }}"
+            rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+        {%- endblock -%}
     </head>
 
     <body class="font-sans text-gray-900 antialiased">
+        {%- block body -%}
         {%- include "templates/includes/navbar.html" ignore missing -%}
-        {%- block body -%}{%- endblock -%}
+        {%- block page_content -%}{%- endblock -%}
         {%- include "templates/includes/footer.html" ignore missing -%}
+        {%- endblock -%}
     </body>
 </html>

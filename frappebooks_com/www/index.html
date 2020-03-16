@@ -2,7 +2,7 @@
 {% extends base_template_path %}
 
 
-{% block body %}
+{% block page_content %}
 <section class="container">
     <img class="w-full" src="{{ utils.asset('img/frappe-comic-1.png') }}" alt="Comic Strip">
     <div class="mt-8 p-8 border-2 border-gray-800 flex flex-col sm:flex-row sm:items-center sm:justify-between rounded">
@@ -98,9 +98,9 @@
         ]
         -%}
         <div class="mt-8"
-            x-data="{ selectedTab: 'Invoicing', tabs: ['Dashboard', 'Invoicing', 'Billing', 'Payments', 'Ledger'] }"
+            x-data="{ selectedTab: 'Invoicing', tabs: ['Dashboard', 'Invoicing', 'Billing', 'Payments', 'Ledger'], interval: null }"
             x-init="() => {
-                setInterval(() => {
+                interval = setInterval(() => {
                     let nextIndex = (tabs.indexOf(selectedTab) + 1) % tabs.length;
                     selectedTab = tabs[nextIndex];
                 }, 5000)
@@ -108,7 +108,7 @@
             <nav class="flex overflow-auto">
                 {%- for tab in tabs -%}
                 <div class="mr-18 border-b-2 border-transparent hover:border-white"
-                    @click="selectedTab = '{{ tab.name }}'"
+                    @click="selectedTab = '{{ tab.name }}'; clearInterval(interval)"
                     :class="{'border-white': selectedTab === '{{ tab.name }}'}">
                     <h3 class="py-6 font-semibold text-xl hover:text-white cursor-pointer"
                         :class="selectedTab === '{{ tab.name }}' ? 'text-white' : 'text-gray-500'">
@@ -119,8 +119,11 @@
             </nav>
             <div class="mt-4">
                 {%- for tab in tabs -%}
-                <img :class="{'hidden': selectedTab !== '{{ tab.name }}'}" class="w-full"
-                    src="{{ utils.asset(tab.img) }}" alt="Screenshot of {{ tab.name }}">
+                <img
+                    class="w-full op"
+                    src="{{ utils.asset(tab.img) }}"
+                    alt="Screenshot of {{ tab.name }}"
+                    x-show="selectedTab === '{{ tab.name }}'">
                 {%- endfor -%}
             </div>
         </div>

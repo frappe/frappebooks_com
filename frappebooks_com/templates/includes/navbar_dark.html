@@ -1,0 +1,32 @@
+{%- import 'templates/macros.html' as utils with context -%}
+
+<div class="py-4 bg-black text-white">
+    <div class="container flex flex-col sm:flex-row sm:items-center sm:justify-between" x-data="{ open: false }">
+        <div class="flex-1 flex justify-between">
+            {% include "templates/includes/logo.html" %}
+            <button class="sm:hidden" @click="open = !open">
+                <template x-if="!open">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </template>
+                <template x-if="open">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </template>
+            </button>
+        </div>
+        <div class="mt-4 sm:mt-0 sm:flex items-baseline" :class="{'hidden': !open}">
+            <a class="sm:ml-8 block py-2" href="/docs">Documentation</a>
+            <a class="sm:ml-8 block py-2" href="https://github.com/frappe/books" target="_blank">GitHub</a>
+        </div>
+    </div>
+</div>

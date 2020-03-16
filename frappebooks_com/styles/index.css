@@ -4,3 +4,88 @@
 /* purgecss end ignore */
 
 @tailwind utilities;
+
+.from-markdown {
+  @apply text-xl;
+  @apply text-gray-900;
+  @apply leading-relaxed;
+  @apply py-20;
+
+  > * + * {
+    @apply mt-6;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  ul,
+  ol {
+    @apply pl-10;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  > ul > * + *,
+  > ol > * + * {
+    @apply mt-4;
+  }
+
+  > blockquote,
+  blockquote& {
+    @apply italic text-gray-900 px-6 py-4 bg-gray-200 border-l-2 border-gray-800;
+  }
+
+  > h1,
+  h1& {
+    @apply text-4xl;
+    @apply mt-16;
+    @apply mb-4;
+    @apply leading-none;
+    @apply font-bold;
+  }
+
+  > h2,
+  h2& {
+    @apply mt-16;
+    @apply mb-4;
+    @apply leading-none;
+    @apply font-bold;
+    @apply text-3xl;
+  }
+
+  > h3,
+  h3& {
+    @apply mt-16;
+    @apply mb-4;
+    @apply leading-none;
+    @apply font-bold;
+    @apply text-2xl;
+  }
+
+  > a,
+  > p a,
+  > ul li a,
+  > ol li a,
+  a& {
+    @apply border-b border-gray-800;
+    &:hover {
+      @apply text-gray-700;
+    }
+  }
+
+  tr > td,
+  tr > th {
+    @apply px-4 py-2 border border-gray-800;
+  }
+
+  th:empty {
+    display: none;
+  }
+}

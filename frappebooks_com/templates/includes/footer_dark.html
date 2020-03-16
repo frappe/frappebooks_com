@@ -1,0 +1,59 @@
+{%- import 'templates/macros.html' as utils with context -%}
+
+<footer class="py-20 bg-black text-white">
+    <div class="container">
+        {% include "templates/includes/logo.html" %}
+        <nav class="flex flex-col md:flex-row justify-between md:items-center border-b border-gray-800">
+            <ul class="w-full md:w-auto grid grid-cols-3 sm:grid-cols-6 row-gap-4 md:flex py-4 items-center">
+                <li class="mr-8"><a href="/blog">Blog</a></li>
+                <li class="mr-8"><a href="/forum">Forum</a></li>
+                <li class="mr-8"><a href="https://erpnext.com">ERPNext</a></li>
+                <li class="mr-8"><a href="https://frappe.io/about">Team</a></li>
+                <li class="mr-8"><a href="https://frappe.io/jobs">Careers</a></li>
+                <li class="mr-8"><a href="https://frappe.io/about">Contact</a></li>
+            </ul>
+            <ul class="flex py-4">
+                <li class="mr-8">
+                    <a href="https://www.facebook.com/ERPNext/" target="_blank">
+                        <img class="h-5" src="{{ utils.asset('img/social/facebook.svg') }}" alt="Facebook Logo">
+                    </a>
+                </li>
+                <li class="mr-8">
+                    <a href="https://www.twitter.com/erpnext/" target="_blank">
+                        <img class="h-5" src="{{ utils.asset('img/social/twitter.svg') }}" alt="Twitter Logo">
+                    </a>
+                </li>
+                <li class="mr-8">
+                    <a href="https://medium.com/frapp%C3%A9-thoughts" target="_blank">
+                        <img class="h-5" src="{{ utils.asset('img/social/medium.svg') }}" alt="Medium Logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/frappe" target="_blank">
+                        <img class="h-5" src="{{ utils.asset('img/social/github.svg') }}" alt="GitHub Logo">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="mt-4 flex flex-col md:flex-row justify-between items-baseline text-sm">
+            <div>
+                <div>
+                    D/324 Neelkanth Business Park, Vidyavihar West, Mumbai, Maharashtra - 400086, India
+                </div>
+                <div>
+                    <a href="tel:++91 22 4897 0555">
+                        +91 22 4897 0555
+                    </a>
+                    -
+                    <a href="mailto:hello@frappe.io">
+                        hello@frappe.io
+                    </a>
+                </div>
+            </div>
+            <div class="mt-2 md:mt-0">
+                © Frappe Technologies Pvt. Ltd. Content licensed under CC-BY-SA 3.0.
+            </div>
+        </div>
+
+    </div>
+</footer>

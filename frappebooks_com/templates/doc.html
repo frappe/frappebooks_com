@@ -1,0 +1,49 @@
+{% extends "templates/base.html" %}
+
+{%- block body -%}
+{%- include "templates/includes/navbar_dark.html" -%}
+<div class="bg-black">
+    <div class="container px-24 text-white py-40">
+        <h1 class="text-5xl font-semibold leading-none">
+            {{ title or '' }}
+        </h1>
+        <p class="mt-4 text-2xl">
+            {{ intro or '' }}
+        </p>
+    </div>
+</div>
+<div class="flex pl-24 container">
+    <div class="flex-1">
+        {%- block content -%}
+
+        {%- endblock -%}
+    </div>
+    {%- if not hide_sidebar_right -%}
+    <div class="w-64">
+
+    </div>
+    {%- endif -%}
+</div>
+
+{%- if related_topics -%}
+<div class="bg-black">
+    <div class="container text-white py-18">
+        <h3 class="text-2xl font-bold text-gray-500">Related Topics</h3>
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {%- for topic in related_topics -%}
+            <div>
+                <h4 class="text-2xl font-bold">
+                    <a href="{{ topic.link }}">
+                        {{ topic.title }}
+                    </a>
+                </h4>
+                <p class="mt-4 text-xl">{{ topic.description }}</p>
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+{%- endif -%}
+
+{%- include "templates/includes/footer_dark.html" -%}
+{%- endblock -%}

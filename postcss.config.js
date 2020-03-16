@@ -1,15 +1,19 @@
 const path = require('path');
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: ['./frappebooks_com/**/*.html'],
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-});
+const purgecss = require('@fullhuman/postcss-purgecss');
 const tailwindcss = require('tailwindcss');
-const config_path = path.resolve(__dirname, './tailwind.config.js');
+const postcssNested = require('postcss-nested');
+const production = process.env.FRAPPE_ENV === 'production';
 
 module.exports = {
   plugins: [
-    tailwindcss(config_path),
-    purgecss,
-    require('cssnano')({ preset: 'default' })
-  ]
+    tailwindcss(path.resolve(__dirname, './tailwind.config.js')),
+    postcssNested,
+    production
+      ? purgecss({
+          content: ['./frappebooks_com/**/*.html'],
+          defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+        })
+      : null,
+    production ? require('cssnano')({ preset: 'default' }) : null
+  ].filter(Boolean)
 };
