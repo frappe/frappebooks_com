@@ -1,80 +1,53 @@
 ---
 base_template_path: templates/doc.html
 title: Introduction
-intro: Welcome to the Frappe Books User Guide. This guide will teach you how to look after your accounting in Frappe Books. We will go through the basics that’ll equip you to use the product. However, knowing the basics of accounting is recommended.
+intro: Welcome to the Frappe Books User Guide. This guide will teach you how to look after your accounting in Frappe
+ Books. We will go through the basics that’ll equip you to use the product. However, knowing the basics of accounting is
+ recommended.
 hide_sidebar_right: true
 ---
 
-<div>
-    <div class="py-20">
-        <h3 class="text-2xl text-gray-700">Basics and Setup</h3>
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 col-gap-8 row-gap-12">
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/accounting-basics">
-                        Accounting Basics
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">A small primer to get you up to speed on the concepts of accounting.</p>
-            </div>
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/setting-up">
-                        Setting Up
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">Learn how to configure Frappe Books for your company to get started.</p>
-            </div>
+{%- set sections = [
+    {
+        "section_title": "Basics and Setup",
+        "items": [
+            { "title": "Accounting Basics", "link": "/docs/accounting-basics", "description": "A small primer to get you up to speed on the concepts of accounting." },
+            { "title": "Setting Up", "link": "/docs/setting-up", "description": "Learn how to configure Frappe Books for your company to get started." },
+        ]
+    },
+    {
+        "section_title": "Transactions",
+        "items": [
+            { "title": "Invoices", "link": "/docs/invoices", "description": "Invoices are bills that are sent to your customers and income is booked." },
+            { "title": "Bills", "link": "/docs/bills", "description": "A bill that your supplier sends you for products or services you have purchased." },
+            { "title": "Journal Entries", "link": "/docs/journal-entries", "description": "Use journal entries to record transactions that can't be categorized as a sale or purchase." },
+        ]
+    },
+    {
+        "section_title": "Analytics and Reports",
+        "items": [
+            { "title": "Dashboard", "link": "/docs/dashboard", "description": "Dashboards show an overview of cashflow, profit or loss and expenses." },
+            { "title": "Accounting Reports", "link": "/docs/accounting-reports", "description": "Reports include Profit and Loss Statement, Balance Sheet and General Ledger." },
+        ]
+    },
+] -%}
+
+{%- for section in sections -%}
+
+<div class="py-20 {% if not loop.first -%} border-t border-gray-800 {%- endif -%}">
+    <h3 class="text-3xl text-gray-700">{{ section.section_title }}</h3>
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 col-gap-8 row-gap-12">
+        {%- for item in section['items'] -%}
+        <div>
+            <h4 class="text-2xl font-bold">
+                <a href="{{ item.link }}">
+                    {{ item.title }}
+                </a>
+            </h4>
+            <p class="mt-4 text-xl">{{ item.description }}</p>
         </div>
-    </div>
-    <div class="py-20 border-t border-gray-800">
-        <h3 class="text-2xl text-gray-700">Transactions</h3>
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 col-gap-8 row-gap-12">
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/invoices">
-                        Invoices
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">Invoices are bills that are sent to your customers and income is booked.</p>
-            </div>
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/bills">
-                        Bills
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">A bill that your supplier sends you for products or services you have purchased.</p>
-            </div>
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/journal-entries">
-                        Journal Entries
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">Use journal entries to record transactions that can't be categorized as a sale or purchase.</p>
-            </div>
-        </div>
-    </div>
-    <div class="py-20 border-t border-gray-800">
-        <h3 class="text-2xl text-gray-700">Analytics and Reports</h3>
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 col-gap-8 row-gap-12">
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/accounting-basics">
-                        Dashboard
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">Dashboards show an overview of cashflow, profit or loss and expenses.</p>
-            </div>
-            <div>
-                <h4 class="text-2xl font-bold">
-                    <a href="/docs/accounting-basics">
-                        Accounting Reports
-                    </a>
-                </h4>
-                <p class="mt-4 text-xl">Reports include Profit and Loss Statement, Balance Sheet and General Ledger.</p>
-            </div>
-        </div>
+        {%- endfor -%}
     </div>
 </div>
+
+{%- endfor -%}
