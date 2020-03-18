@@ -55,3 +55,45 @@ Now, let's categorize these into the five types of Accounts:
 
 - Rent: ₹40,000
 
+Let’s take a look at each transaction and understand which accounts will get
+affected, from an accounting point-of-view:
+
+1. Cash Investment
+
+   Since you, the owner, invested money into the business, it is a liability.
+   So, Account Payables, which is a Liability account, is increased by
+   ₹5,00,000.
+
+   Also, the money in the Bank Account, which is an Asset account, is increased
+   by ₹5,00,000.
+
+1. Rent
+
+   Rent is an immediate expense, so it is recorded in the Rent Account, which is
+   an Expense account, it is increased by ₹40,000.
+
+   Also, the money is spent from the Bank Account, which is an Asset account, it
+   is decreased by ₹40,000.
+
+1. First Sale
+
+   We got an immediate payment, it is recorded in Sales Account, which is an
+   Income account, the balance is increased by ₹30,000.
+
+   Also, we received the money in our Bank Account directly, so it’s balance
+   increases by ₹30,000.
+
+1. Hiring a Web Agency
+
+   We hired a Web Agency for some work, and we are liable to pay them in the
+   future. This is recorded in Accounts Payable by increasing the amount by
+   ₹50,000.
+
+   Since this is an expense for us, we also increase the balance in the Vendor
+   Expense Account by ₹50,000.
+
+As you might have noticed, every transaction we do in our business affects two
+accounts. This is the basis of double-entry bookkeeping system.
+
+You can test this out by creating a Sales Invoice in Frappe Books, and then
+check the General Ledger Report to see which accounts were affected.
